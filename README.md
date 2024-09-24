@@ -15,14 +15,15 @@ Nodes are the 431 municipalities of the Netherlands as of 2010. The following li
 * https://www.cbs.nl/nl-nl/onze-diensten/methoden/classificaties/overig/gemeentelijke-indelingen-per-jaar/indeling-per-jaar/gemeentelijke-indeling-op-1-januari-2010
 
 `nodes.csv`:
-* `gemeente_code` : municipality code, can be matched with other official statistics
-* `gemeente_name` : municipality name
+* `label` : municipality code, can be matched with other official statistics
+* `municipality_name` : municipality name
+* `lat` : latitude of centroid
+* `lon` : longitude of centroid
 * `osn_user_count` : number of users in the Hyves network in the municipality
 * `rsn_population` : number of people in the Statistics Netherlands network in the municipality
 * `location_x` : centroid x coordinate of municipality in the Amersfoort coordinate system (https://epsg.io/28992)
 * `location_y` : centroid y coordinate of municipality in the Amersfoort coordinate system (https://epsg.io/28992)
-* `lat` : latitude of centroid
-* `lon` : longitude of centroid
+
 
 ## Edges
 
@@ -31,13 +32,14 @@ Edges contain how many connections go between users / people of a given municipa
 Because of disclosure risk, any municipality pair  is omitted for which any of the counts, e.g. Hyves connection count, Statistics Netherlands network all layers, family layer, work layer, or school layer is smaller than 10.
 
 `edges.csv`:
-* `gemeente_code_source` : municipality code of the alphabetically smaller municipality from the pair
-* `gemeente_code_target` : municipality code of the alphabetically larger municipality from the pair
+* `source_label` : municipality code of the alphabetically smaller municipality from the pair
+* `target_label` : municipality code of the alphabetically larger municipality from the pair
 * `osn_user_count` : number of connections between users of the Hyves network between the two municipalities
 * `rns_all_layers_count` : number of connections of any type between people living in the two municipalities (for self-loops, this should be divided by 2)
 * `rns_family_count` : number of family connections between people living in the two municipalities (for self-loops, this should be divided by 2)
 * `rns_school_count` : number of family connections between people living in the two municipalities (for self-loops, this should be divided by 2)
 * `rns_work_count` : number of family connections between people living in the two municipalities (for self-loops, this should be divided by 2)
+* `distance` : distance between municipality centroids in meters, measured from `location_x`, `location_y` in `nodes.csv`
 
 ##  Map
 
