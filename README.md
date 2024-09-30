@@ -15,8 +15,8 @@ Nodes are the 431 municipalities of the Netherlands as of 2010. The following li
 * https://www.cbs.nl/nl-nl/onze-diensten/methoden/classificaties/overig/gemeentelijke-indelingen-per-jaar/indeling-per-jaar/gemeentelijke-indeling-op-1-januari-2010
 
 `nodes.csv`:
-* `label` : municipality code, can be matched with other official statistics
-* `municipality_name` : municipality name
+* `id` : municipality code, can be matched with other official statistics (usually GM_CODE or STATCODE)
+* `label` : municipality name
 * `lat` : latitude of centroid
 * `lon` : longitude of centroid
 * `osn_user_count` : number of users in the Hyves network in the municipality
@@ -32,8 +32,8 @@ Edges contain how many connections go between users / people of a given municipa
 Because of disclosure risk, any municipality pair  is omitted for which any of the counts, e.g. Hyves connection count, Statistics Netherlands network all layers, family layer, work layer, or school layer is smaller than 10.
 
 `edges.csv`:
-* `source_label` : municipality code of the alphabetically smaller municipality from the pair
-* `target_label` : municipality code of the alphabetically larger municipality from the pair
+* `source` : municipality code of the alphabetically smaller municipality from the pair
+* `target` : municipality code of the alphabetically larger municipality from the pair
 * `osn_user_count` : number of connections between users of the Hyves network between the two municipalities
 * `rns_all_layers_count` : number of connections of any type between people living in the two municipalities (for self-loops, this should be divided by 2)
 * `rns_family_count` : number of family connections between people living in the two municipalities (for self-loops, this should be divided by 2)
